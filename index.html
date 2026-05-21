@@ -18,10 +18,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
-    /* ── NAVIGATION ── */
-    #page-accueil    { display: block; }
-    #page-formulaire { display: none;  }
-
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -32,7 +28,7 @@
     }
     .hero::before, .hero::after { content:''; position:absolute; border-radius:50%; opacity:.12; }
     .hero::before { width:500px; height:500px; background:var(--green2); top:-120px; left:-120px; }
-    .hero::after  { width:350px; height:350px; background:var(--red);    bottom:-80px; right:-80px; }
+    .hero::after  { width:350px; height:350px; background:var(--red); bottom:-80px; right:-80px; }
 
     .badge {
       display:inline-block; background:var(--green2); color:var(--white);
@@ -73,7 +69,7 @@
 
     /* ── INFOS CLÉS ── */
     .info-section { background:var(--white); }
-    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
     .card {
       background:linear-gradient(135deg,#f0fbe8,#fffbea); border:2px solid #d4edba;
       border-radius:18px; padding:28px 22px; text-align:center;
@@ -128,139 +124,28 @@
     /* ── CTA ── */
     .cta-section { background:linear-gradient(135deg,#e8f5e2,#fffbea); text-align:center; padding:80px 20px; }
     .cta-section p { font-size:1.1rem; color:#555; margin-bottom:32px; max-width:520px; margin-left:auto; margin-right:auto; }
+
+    /* ── BOUTON S'INSCRIRE (lien direct Airtable) ── */
     .btn-register {
-      display:inline-block; background:linear-gradient(135deg,#1565c0,#1e88e5);
+      display:inline-block;
+      background:linear-gradient(135deg,#1565c0,#1e88e5);
       color:var(--white); font-family:'Nunito',sans-serif; font-size:1.15rem;
-      font-weight:800; padding:18px 52px; border-radius:50px; border:none;
-      cursor:pointer; box-shadow:0 8px 28px rgba(21,101,192,.35);
+      font-weight:800; padding:18px 52px; border-radius:50px;
+      text-decoration:none;
+      box-shadow:0 8px 28px rgba(21,101,192,.35);
       transition:transform .2s, box-shadow .2s; letter-spacing:.5px;
     }
     .btn-register:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 14px 36px rgba(21,101,192,.45); }
 
+    /* ── NOTE SOUS LE BOUTON ── */
+    .cta-note {
+      margin-top: 16px;
+      font-size:.85rem; color:#888; font-weight:600;
+    }
+
     /* ── FOOTER ── */
     footer { background:var(--dark); color:rgba(255,255,255,.6); text-align:center; padding:28px 20px; font-size:.85rem; }
     footer strong { color:var(--yellow); }
-
-    /* ══════════════════════════════════════════
-       PAGE FORMULAIRE
-    ══════════════════════════════════════════ */
-    #page-formulaire {
-      min-height: 100vh;
-      background: linear-gradient(160deg, #e8f5e2 0%, #fffbea 60%, #fff3cd 100%);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Top bar */
-    .form-topbar {
-      width: 100%;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid #d4edba;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .back-btn {
-      background: linear-gradient(135deg,#1e5c10,#2d7a1f);
-      color: var(--white);
-      font-family:'Nunito',sans-serif;
-      font-size:.88rem; font-weight:800;
-      padding:10px 22px; border:none; border-radius:50px;
-      cursor:pointer; display:flex; align-items:center; gap:6px;
-      box-shadow:0 4px 14px rgba(45,122,31,.3);
-      transition:transform .2s, box-shadow .2s;
-    }
-    .back-btn:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(45,122,31,.4); }
-    .topbar-title {
-      font-family:'Playfair Display',serif;
-      font-size:1.1rem; font-weight:900; color:var(--green);
-    }
-
-    /* Wrapper formulaire */
-    .form-page-inner {
-      width: 100%;
-      max-width: 780px;
-      padding: 40px 20px 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
-
-    /* Header de la page formulaire */
-    .form-page-header {
-      text-align: center;
-      background: var(--white);
-      border-radius: 24px;
-      border: 2px solid #d4edba;
-      padding: 32px 28px;
-      width: 100%;
-      box-shadow: 0 8px 32px rgba(45,122,31,.08);
-    }
-    .form-page-header .big-emoji { font-size: 3rem; display: block; margin-bottom: 12px; }
-    .form-page-header h1 {
-      font-family:'Playfair Display',serif;
-      font-size: clamp(1.5rem,4vw,2rem);
-      color: var(--green); font-weight:900; margin-bottom:10px;
-    }
-    .form-page-header p { font-size:.95rem; color:#666; line-height:1.75; max-width:500px; margin:0 auto; }
-
-    /* Rappel paiement */
-    .payment-reminder {
-      width: 100%;
-      background: linear-gradient(135deg,#fff8e1,#fffbea);
-      border: 2px solid #f9c923;
-      border-radius: 18px;
-      padding: 22px 24px;
-    }
-    .payment-reminder h3 {
-      font-family:'Playfair Display',serif;
-      font-size:1rem; color:var(--dark);
-      font-weight:900; margin-bottom:12px;
-      display:flex; align-items:center; gap:8px;
-    }
-    .reminder-steps { list-style:none; display:flex; flex-direction:column; gap:8px; }
-    .reminder-steps li {
-      font-size:.88rem; font-weight:600; color:#555;
-      display:flex; align-items:flex-start; gap:10px; line-height:1.5;
-    }
-    .reminder-steps li span.num {
-      background:var(--green2); color:#fff;
-      min-width:22px; height:22px; border-radius:50%;
-      font-size:.72rem; font-weight:900;
-      display:flex; align-items:center; justify-content:center;
-      flex-shrink:0; margin-top:1px;
-    }
-
-    /* Wrapper iframe */
-    .iframe-wrapper {
-      width: 100%;
-      background: var(--white);
-      border-radius: 24px;
-      border: 2px solid #d4edba;
-      box-shadow: 0 8px 40px rgba(45,122,31,.1);
-      overflow: hidden;
-      position: relative;
-    }
-    .iframe-wrapper::before {
-      content: '';
-      display: block;
-      height: 6px;
-      background: linear-gradient(90deg, var(--green), var(--green2), var(--yellow));
-    }
-    .iframe-wrapper iframe {
-      display: block;
-      width: 100%;
-      height: 620px;
-      border: none;
-      background: transparent;
-    }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeDown {
@@ -268,21 +153,17 @@
       to   { opacity:1; transform:translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .iframe-wrapper iframe { height: 700px; }
-      .form-page-header { padding: 24px 18px; }
-      .payment-reminder { padding: 18px 16px; }
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width:600px) {
+      .price-box { padding:28px 18px; }
+      .cards-grid { grid-template-columns:1fr 1fr; }
+      .btn-register { padding:16px 32px; font-size:1rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     PAGE ACCUEIL
-════════════════════════════════════════ -->
-<div id="page-accueil">
-
+  <!-- HERO -->
   <section class="hero">
     <div class="badge">🌿 Spéciale Formation 2026</div>
     <h1>Bienvenue à la<br><span>Formation des Fruités</span> 🍓🥤</h1>
@@ -291,10 +172,11 @@
       pour créer, vendre et développer votre activité autour des boissons et desserts fruités.
     </p>
     <div class="logo-wrapper">
-      <img class="logo-circle" src="images/logo[1].jpeg" alt="Logo Les Fruités" />
+      <img class="logo-circle" src="images/logo.jpg" alt="Logo Les Fruités" />
     </div>
   </section>
 
+  <!-- INFOS CLÉS -->
   <section class="info-section">
     <div class="container">
       <h2 class="section-title">Informations Clés</h2>
@@ -309,6 +191,7 @@
     </div>
   </section>
 
+  <!-- MODULES -->
   <section class="modules-section">
     <div class="container">
       <h2 class="section-title">Les Modules de la Formation</h2>
@@ -322,6 +205,7 @@
     </div>
   </section>
 
+  <!-- PRIX -->
   <section class="price-section">
     <div class="container">
       <h2 class="section-title">Frais d'Inscription & Paiement</h2>
@@ -344,11 +228,12 @@
     </div>
   </section>
 
+  <!-- MODALITÉS -->
   <section class="modalities-section">
     <div class="container">
       <h2 class="section-title">Comment ça fonctionne ?</h2>
       <div class="modalities-grid">
-        <div class="modality-card green"><div class="modality-card-icon">✅</div><h3>1. Inscrivez-vous</h3><p>Remplissez le formulaire d'inscription et soumettez-le.</p></div>
+        <div class="modality-card green"><div class="modality-card-icon">✅</div><h3>1. Inscrivez-vous</h3><p>Cliquez sur le bouton ci-dessous, remplissez le formulaire et soumettez-le.</p></div>
         <div class="modality-card red"><div class="modality-card-icon">💳</div><h3>2. Payez</h3><p>Effectuez le paiement via Western Union ou Mixx by Yas et envoyez la capture WhatsApp.</p></div>
         <div class="modality-card yellow"><div class="modality-card-icon">🔗</div><h3>3. Rejoignez le groupe</h3><p>Une fois le paiement validé, le lien Google Meet vous sera partagé dans un groupe WhatsApp dédié.</p></div>
       </div>
@@ -358,84 +243,26 @@
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="cta-section">
     <div class="container">
       <h2 class="section-title">Prêt(e) à nous rejoindre ?</h2>
       <p>Ne manquez pas cette opportunité unique ! Les places sont limitées. Cliquez ci-dessous pour remplir votre formulaire d'inscription.</p>
-      <button class="btn-register" onclick="allerFormulaire()">S'inscrire à la Formation 🍓</button>
+      <a
+        class="btn-register"
+        href="https://airtable.com/appk1CawzbN1vFTts/pag1EWRGg5nQa29HT/form"
+        target="_blank"
+        rel="noopener noreferrer">
+        S'inscrire à la Formation 🍓
+      </a>
+      <p class="cta-note">📲 Fonctionne sur mobile & ordinateur</p>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>© 2026 <strong>Les Fruités</strong> — Tous droits réservés &nbsp;|&nbsp; Contact : +228 90 27 00 80</p>
   </footer>
-
-</div>
-
-
-<!-- ════════════════════════════════════════
-     PAGE FORMULAIRE
-════════════════════════════════════════ -->
-<div id="page-formulaire">
-
-  <!-- Top bar -->
-  <div class="form-topbar">
-    <button class="back-btn" onclick="retourAccueil()">← Retour</button>
-    <span class="topbar-title">🍓 Inscription — Les Fruités</span>
-  </div>
-
-  <div class="form-page-inner">
-
-    <!-- Header -->
-    <div class="form-page-header">
-      <span class="big-emoji">📝</span>
-      <h1>Formulaire d'Inscription</h1>
-      <p>
-        Remplissez soigneusement les informations ci-dessous et cliquez sur <strong>« Envoyer »</strong>.<br/>
-        Votre inscription sera confirmée uniquement après réception et validation de votre paiement.
-      </p>
-    </div>
-
-    <!-- Rappel paiement -->
-    <div class="payment-reminder">
-      <h3>💳 Rappel — Procédure après inscription</h3>
-      <ul class="reminder-steps">
-        <li><span class="num">1</span> Remplissez et envoyez le formulaire ci-dessous</li>
-        <li><span class="num">2</span> Effectuez le paiement de <strong>50 000 FCFA</strong> via Western Union (<strong>SIMLIWA POUWEDEOU</strong>) ou Mixx by Yas (<strong>+228 90 27 00 80</strong>)</li>
-        <li><span class="num">3</span> Faites une capture d'écran du paiement et envoyez-la sur WhatsApp au <strong>+228 90 27 00 80</strong></li>
-        <li><span class="num">4</span> Vous recevrez le lien Google Meet une fois le paiement validé ✅</li>
-      </ul>
-    </div>
-
-    <!-- Iframe Airtable -->
-    <div class="iframe-wrapper">
-      <iframe
-        class="airtable-embed"
-        src="https://airtable.com/embed/appk1CawzbN1vFTts/pag1EWRGg5nQa29HT/form"
-        frameborder="0"
-        onmousewheel=""
-        width="100%"
-        style="background: transparent; border: none;">
-      </iframe>
-    </div>
-
-  </div>
-</div>
-
-
-<script>
-  function allerFormulaire() {
-    document.getElementById('page-accueil').style.display    = 'none';
-    document.getElementById('page-formulaire').style.display = 'flex';
-    window.scrollTo(0, 0);
-  }
-
-  function retourAccueil() {
-    document.getElementById('page-formulaire').style.display = 'none';
-    document.getElementById('page-accueil').style.display    = 'block';
-    window.scrollTo(0, 0);
-  }
-</script>
 
 </body>
 </html>
